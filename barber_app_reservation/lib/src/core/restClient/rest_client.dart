@@ -1,3 +1,4 @@
+import 'package:barber_app_reservation/src/core/restClient/interceptors/auth_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
@@ -12,7 +13,8 @@ class RestClient extends DioForNative {
       LogInterceptor(
         responseBody: true,
         requestBody: true,
-      )
+      ),
+      AuthInterceptor()
     ]);
   }
 

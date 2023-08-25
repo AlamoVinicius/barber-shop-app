@@ -10,6 +10,14 @@ sealed class UserModel {
     required this.email,
     this.avatar,
   });
+
+  factory UserModel.fromMap(Map<String, dynamic> json) {
+    return switch (json['profile']) {
+      'ADM' => UserModelADM.fromMap(json),
+      'EMPLOYEE' => UserModeEmployee.fromMap(json),
+      _ => throw ArgumentError('User Profile not found')
+    };
+  }
 }
 
 class UserModelADM extends UserModel {
@@ -67,8 +75,8 @@ class UserModeEmployee extends UserModel {
         'name': final String name,
         'email': final String email,
         'barbershop_id': final int barbershopId,
-        'work_days': final List<String> workDays,
-        'work_hours': final List<int> workHours,
+        'work_days': final List workDays,
+        'work_hours': final List workHours,
       } =>
         UserModeEmployee(
           id: id,
@@ -76,8 +84,8 @@ class UserModeEmployee extends UserModel {
           email: email,
           avatar: json['avatar'],
           barbershopId: barbershopId,
-          workDays: workDays,
-          workHours: workHours,
+          workDays: workDays.cast<String>(),
+          workHours: workHours.cast<int>(),
         ),
       _ => throw ArgumentError('Invalid Json'),
     };

@@ -3,6 +3,7 @@ import 'package:barber_app_reservation/src/core/Exceptions/service_exception.dar
 import 'package:barber_app_reservation/src/core/fp/either.dart';
 import 'package:barber_app_reservation/src/core/providers/application_providers.dart';
 import 'package:barber_app_reservation/src/features/auth/login/login_state.dart';
+import 'package:barber_app_reservation/src/model/user_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_vm.g.dart';
@@ -22,8 +23,16 @@ class LoginVm extends _$LoginVm {
 
     switch (result) {
       case Success():
-        // TODO buscar dados do usuário logado
-        // TODO analise para qual tipo de login
+        //invalidate cache
+        ref.invalidate(getMeProvider);
+        ref.invalidate(getMyBarbershopProvider);
+        final userModal = await ref.read(getMeProvider.future);
+        switch (userModal) {
+          case UserModelADM():
+            state = state.copyWith(status: LoginStateStatus.admLogin);
+          case UserModeEmployee():
+            state = state.copyWith(status: LoginStateStatus.employeLogin);
+        }
         break;
 
       case Failure(exception: ServiceException(:final message)):

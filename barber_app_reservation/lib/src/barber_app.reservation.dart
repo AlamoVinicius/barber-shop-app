@@ -18,6 +18,8 @@ class BarberReservationApp extends StatelessWidget {
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
+            '/home/adm': (_) => const Text('adm'),
+            '/home/employee': (_) => const Text('Employee'),
           },
         );
       },
