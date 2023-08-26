@@ -8,6 +8,13 @@
       "profile": "ADM",
       "work_days": ["Seg", "Qua"],
       "work_hours": [6, 7, 8]
+    },
+    {
+      "id": 6,
+      "name": "alamo",
+      "email": "alamo.cma22@gmail.com",
+      "password": "123456",
+      "profile": "ADM"
     }
   ],
   "adm_users": [],
@@ -19,6 +26,14 @@
       "email": "barbeariax@gmail.com",
       "opening_days": ["Seg", "Qua", "Sab"],
       "opening_hours": [6, 7, 8, 9, 18, 19, 20, 12, 13]
+    },
+    {
+      "id": 3,
+      "user_id": "6",
+      "name": "barbearia mt louca",
+      "email": "barbeariaMTLouca@gmail.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+      "opening_hours": [6, 12, 18]
     }
   ],
   "schedules": [

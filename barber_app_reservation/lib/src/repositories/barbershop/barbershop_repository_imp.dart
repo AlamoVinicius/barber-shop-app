@@ -1,4 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
+import 'package:barber_app_reservation/src/core/fp/nil.dart';
 import 'package:dio/dio.dart';
 
 import 'package:barber_app_reservation/src/core/Exceptions/repository_exception.dart';
@@ -34,6 +36,30 @@ class BarbershopRepositoryImp implements BarbershopRepository {
         );
 
         return Success(BarbershopModel.fromMap(data));
+    }
+  }
+
+  @override
+  Future<Either<RepositoryException, Nil>> save(
+      ({
+        String email,
+        String name,
+        List<String> openingDays,
+        List<int> openingHours
+      }) data) async {
+    try {
+      await restClient.auth.post('/barbershop', data: {
+        'user_id': '#userAuthRef',
+        'name': data.name,
+        'email': data.email,
+        'opening_days': data.openingDays,
+        'opening_hours': data.openingHours
+      });
+      return Success(nil);
+    } on Exception catch (error, stackTrace) {
+      log('Erro ao registrar barbearia', error: error, stackTrace: stackTrace);
+      return Failure(
+          RepositoryException(message: 'Erro ao registrar barbearia'));
     }
   }
 }
