@@ -29,19 +29,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // com riverpod ou provider as interações são feitas dentro do método build
-    // with notifier class view modal
     final LoginVm(:login) = ref.watch(loginVmProvider.notifier);
 
-    // without notifier only a state is listenner
     ref.listen(loginVmProvider, (_, state) {
       switch (state) {
         case LoginState(status: LoginStateStatus.initial):
           break;
-        // se o error conter message
+
         case LoginState(status: LoginStateStatus.error, :final errorMessage?):
           Messages.showError(errorMessage, context);
-        // se o error não conter message
+
         case LoginState(status: LoginStateStatus.error):
           Messages.showError('Erro ao realizar o login', context);
         case LoginState(status: LoginStateStatus.admLogin):

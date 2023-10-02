@@ -1,7 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:barber_app_reservation/src/core/fp/either.dart';
 import 'package:barber_app_reservation/src/core/providers/application_providers.dart';
 import 'package:barber_app_reservation/src/features/auth/register/barbershop/barbershop_register_state.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'barbershop_register_vm.g.dart';
 

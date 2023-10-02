@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:barber_app_reservation/src/core/ui/constants.dart';
 import 'package:barber_app_reservation/src/core/ui/helpers/messages.dart';
-import 'package:barber_app_reservation/src/features/auth/login/login_page.dart';
 import 'package:barber_app_reservation/src/features/spash/splash_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
