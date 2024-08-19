@@ -6,11 +6,12 @@ class HoursPanel extends StatelessWidget {
   final int endTime;
   final ValueChanged<int> onHourPressed;
 
-  const HoursPanel(
-      {super.key,
-      required this.startTime,
-      required this.endTime,
-      required this.onHourPressed});
+  const HoursPanel({
+    super.key,
+    required this.startTime,
+    required this.endTime,
+    required this.onHourPressed,
+  });
 
   @override
   Widget build(BuildContext context) {

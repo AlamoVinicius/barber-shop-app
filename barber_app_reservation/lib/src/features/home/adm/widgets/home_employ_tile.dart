@@ -1,10 +1,12 @@
 import 'package:barber_app_reservation/src/core/ui/barbershop_icon.dart';
 import 'package:barber_app_reservation/src/core/ui/constants.dart';
+import 'package:barber_app_reservation/src/model/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeEmployTile extends StatelessWidget {
-  const HomeEmployTile({super.key});
-  final imageNetwork = false;
+  final UserModel employee;
+
+  const HomeEmployTile({super.key, required this.employee});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,9 @@ class HomeEmployTile extends StatelessWidget {
             height: 56,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: switch (imageNetwork) {
-                  true => const NetworkImage("url"),
-                  false => const AssetImage(ImageConstants.avatar)
+                image: switch (employee.avatar) {
+                  final avatar? => NetworkImage(avatar),
+                  _ => const AssetImage(ImageConstants.avatar)
                   //parse to Image Provider is need because generic types is differents
                 } as ImageProvider,
               ),
@@ -40,9 +42,10 @@ class HomeEmployTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Nome e Sobrenome',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                Text(
+                  employee.name,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

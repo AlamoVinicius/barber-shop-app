@@ -19,7 +19,7 @@ class BarbershopModel {
         'name': final String name,
         'email': final String email,
         'opening_days': final List openingDays,
-        'open_hours': final List openHours,
+        'opening_hours': final List openHours,
       } =>
         BarbershopModel(
           id: id,
